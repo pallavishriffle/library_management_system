@@ -1612,3 +1612,123 @@ Processing by BooksController#create as */*
 Completed 422 Unprocessable Entity in 2ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 1226)
 
 
+Started GET "/books" for 127.0.0.1 at 2023-09-04 14:02:40 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BooksController#index as */*
+  Parameters: {"title"=>"rishita", "author"=>"payasi", "publication_year"=>"1965", "availability"=>"true"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_user'
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  ↳ app/controllers/books_controller.rb:6:in `index'
+Completed 200 OK in 24ms (Views: 8.3ms | ActiveRecord: 1.2ms | Allocations: 14445)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2023-09-04 14:03:13 +0530
+Processing by AuthenticationController#login as */*
+  Parameters: {"email"=>"pallavimourya@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pallavimourya@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:7:in `login'
+Completed 401 Unauthorized in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 846)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2023-09-04 14:03:29 +0530
+Processing by AuthenticationController#login as */*
+  Parameters: {"email"=>"pallavi@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pallavi@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:7:in `login'
+Completed 200 OK in 274ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 841)
+
+
+Started GET "/books" for 127.0.0.1 at 2023-09-04 14:03:40 +0530
+Processing by BooksController#index as */*
+  Parameters: {"title"=>"rishita", "author"=>"payasi", "publication_year"=>"1965", "availability"=>"true"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_user'
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  ↳ app/controllers/books_controller.rb:6:in `index'
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.2ms | Allocations: 1700)
+
+
+Started GET "/borrowers" for 127.0.0.1 at 2023-09-04 14:03:43 +0530
+Processing by BorrowersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_user'
+  [1m[36mBorrower Load (0.1ms)[0m  [1m[34mSELECT "borrowers".* FROM "borrowers"[0m
+  ↳ app/controllers/borrowers_controller.rb:6:in `index'
+Completed 200 OK in 10ms (Views: 5.9ms | ActiveRecord: 0.6ms | Allocations: 5349)
+
+
+Started GET "/borrowings" for 127.0.0.1 at 2023-09-04 14:03:45 +0530
+Processing by BorrowingsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_user'
+  [1m[36mBorrowing Load (0.2ms)[0m  [1m[34mSELECT "borrowings".* FROM "borrowings"[0m
+  ↳ app/controllers/borrowings_controller.rb:6:in `index'
+Completed 200 OK in 14ms (Views: 7.0ms | ActiveRecord: 0.7ms | Allocations: 7051)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-09-04 14:03:48 +0530
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.2ms | Allocations: 1652)
+
+
+Started POST "/borrowings" for 127.0.0.1 at 2023-09-04 14:03:52 +0530
+Processing by BorrowingsController#create as */*
+  Parameters: {"book_id"=>"1", "borrower_id"=>"1", "return_date"=>"2021-04-21", "returned"=>"true"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/borrowings_controller.rb:15:in `create'
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/borrowings_controller.rb:15:in `create'
+  [1m[36mBorrower Load (0.1ms)[0m  [1m[34mSELECT "borrowers".* FROM "borrowers" WHERE "borrowers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/borrowings_controller.rb:15:in `create'
+  [1m[36mBook Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "books" WHERE "books"."id" != ? AND "books"."title" = ? LIMIT ?[0m  [["id", 1], ["title", "Pallavi"], ["LIMIT", 1]]
+  ↳ app/models/validates.rb:15:in `validate_title'
+  [1m[36mBorrowing Create (0.3ms)[0m  [1m[32mINSERT INTO "borrowings" ("book_id", "borrower_id", "return_date", "returned", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["book_id", 1], ["borrower_id", 1], ["return_date", "2021-04-21"], ["returned", 1], ["created_at", "2023-09-04 08:33:52.729020"], ["updated_at", "2023-09-04 08:33:52.729020"]]
+  ↳ app/controllers/borrowings_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/borrowings_controller.rb:15:in `create'
+Completed 201 Created in 27ms (Views: 0.3ms | ActiveRecord: 3.6ms | Allocations: 10052)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2023-09-04 14:07:49 +0530
+Processing by AuthenticationController#login as */*
+  Parameters: {"email"=>"pallavi@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pallavi@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:7:in `login'
+Completed 200 OK in 273ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 672)
+
+
+Started GET "/books" for 127.0.0.1 at 2023-09-04 14:07:54 +0530
+Processing by BooksController#index as */*
+  Parameters: {"title"=>"rishita", "author"=>"payasi", "publication_year"=>"1965", "availability"=>"true"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_user'
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  ↳ app/controllers/books_controller.rb:6:in `index'
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.2ms | Allocations: 1690)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2023-09-04 14:53:31 +0530
+Processing by AuthenticationController#login as */*
+  Parameters: {"email"=>"pallavi@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pallavi@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:7:in `login'
+Completed 200 OK in 277ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 3083)
+
+
+Started GET "/books" for 127.0.0.1 at 2023-09-04 14:53:38 +0530
+Processing by BooksController#index as */*
+  Parameters: {"title"=>"rishita", "author"=>"payasi", "publication_year"=>"1965", "availability"=>"true"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_user'
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  ↳ app/controllers/books_controller.rb:6:in `index'
+Completed 200 OK in 12ms (Views: 7.0ms | ActiveRecord: 0.3ms | Allocations: 5128)
+
+

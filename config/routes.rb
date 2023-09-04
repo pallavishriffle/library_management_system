@@ -7,9 +7,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   root 'users#index'
 
-  resources :users
+  resources :users, :books, :borrowers
+  resource  :borrowings
   post 'auth/login', to: 'authentication#login'
-  resources :books
-  resources :borrowers
-  resources :borrowings
 end
