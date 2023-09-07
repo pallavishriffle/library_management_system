@@ -10,39 +10,31 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
-  def new
-    @book = Book.new
-  end
-
   def create
     @book = Book.new(book_params)
 
     if @book.save
-      render plain: 'book succesfully added'
+      render json: { message:"Book Added!!", data: @book }
     else
-      render json: @book.errors, status: 422
+      render json: { errors: @book.errors.full_messages }
     end
   end
 
-  def edit
-    @book = Book.find(params[:id])
-  end
-
+  
   def update
     @book = Book.find(params[:id])
 
     if @book.update(book_params)
-      render plain: 'book update succesfully added'
+      render json: { message:"Book Update!!", data: @book }
     else
-      render :edit, status: :unprocessable_entity
+      render json: { errors: @book.errors.full_messages }
     end
   end
 
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
-
-    render plain: 'book deleted succesfully '
+    render json: { message:"Book Deleted!!", data: @book }
   end
 
   private

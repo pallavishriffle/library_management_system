@@ -10,39 +10,30 @@ class BorrowersController < ApplicationController
     @borrower = Borrower.find(params[:id])
   end
 
-  def new
-    @borrower = Borrower.new
-  end
-
   def create
     @borrower = Borrower.new(borrower_params)
 
     if @borrower.save
-      render plain: 'borrower succesfully added'
+      render json: { message:"Borrower Added!!", data: @borrower }
     else
-      render :new, status: 422
+      render json: { errors: @borrower.errors.full_messages }
     end
-  end
-
-  def edit
-    @borrower = Borrower.find(params[:id])
   end
 
   def update
     @borrower = Borrower.find(params[:id])
 
     if @borrower.update(borrower_params)
-      render plain: 'borrower update succesfully added'
+      render json: { message:"borrower update succesfully!!", data: @borrower }
     else
-      render :edit, status: :unprocessable_entity
+      render json: { errors: @borrower.errors.full_messages }
     end
   end
 
   def destroy
     @borrower = Borrower.find(params[:id])
     @borrower.destroy
-
-    render plain: 'borrower deleted succesfully '
+    render json: { message:"Borrower Deleted!!", data: @book }
   end
 
   private

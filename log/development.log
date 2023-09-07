@@ -1732,3 +1732,101 @@ Processing by BooksController#index as */*
 Completed 200 OK in 12ms (Views: 7.0ms | ActiveRecord: 0.3ms | Allocations: 5128)
 
 
+Started GET "/books" for 127.0.0.1 at 2023-09-04 15:15:11 +0530
+Processing by BooksController#index as */*
+  Parameters: {"title"=>"rishita", "author"=>"payasi", "publication_year"=>"1965", "availability"=>"true"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_user'
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  ↳ app/controllers/books_controller.rb:6:in `index'
+Completed 200 OK in 16ms (Views: 8.1ms | ActiveRecord: 0.7ms | Allocations: 7149)
+
+
+Started GET "/auth/login" for 127.0.0.1 at 2023-09-04 15:15:43 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/auth/login"):
+  
+Started POST "/auth/login" for 127.0.0.1 at 2023-09-04 15:15:47 +0530
+Processing by AuthenticationController#login as */*
+  Parameters: {"email"=>"pallavimourya@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pallavimourya@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:7:in `login'
+Completed 401 Unauthorized in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 770)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-09-04 15:16:02 +0530
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.2ms | Allocations: 1652)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2023-09-04 15:16:22 +0530
+Processing by AuthenticationController#login as */*
+  Parameters: {"email"=>"pallavimourya99@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pallavimourya99@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:7:in `login'
+Completed 200 OK in 273ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 686)
+
+
+Started GET "/books" for 127.0.0.1 at 2023-09-04 15:16:29 +0530
+Processing by BooksController#index as */*
+  Parameters: {"title"=>"rishita", "author"=>"payasi", "publication_year"=>"1965", "availability"=>"true"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_user'
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  ↳ app/controllers/books_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms | Allocations: 1689)
+
+
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  [1m[36mBorrower Load (0.2ms)[0m  [1m[34mSELECT "borrowers".* FROM "borrowers"[0m
+  [1m[36mBorrowing Load (0.2ms)[0m  [1m[34mSELECT "borrowings".* FROM "borrowings"[0m
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "borrowings" ON "borrowings"."book_id" = "books"."id"[0m
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "borrowings" ON "borrowings"."book_id" = "books"."id" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "borrowings" ON "borrowings"."book_id" = "books"."id" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "borrowings" ON "borrowings"."book_id" = "books"."id" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "borrowings" ON "borrowings"."book_id" = "books"."id" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  [1m[36mBorrower Load (0.2ms)[0m  [1m[34mSELECT "borrowers".* FROM "borrowers"[0m
+  [1m[36mBorrowing Load (0.2ms)[0m  [1m[34mSELECT "borrowings".* FROM "borrowings"[0m
+  [1m[36mBook Count (0.2ms)[0m  [1m[34mSELECT COUNT("books"."id") FROM "books"[0m
+  [1m[36mBook Average (0.3ms)[0m  [1m[34mSELECT AVG(pallavi) FROM "books"[0m
+  [1m[36mBook Average (0.3ms)[0m  [1m[34mSELECT AVG(subtotal) FROM "books"[0m
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "borrowings" ON "borrowings"."book_id" = "books"."id" WHERE "books"."id" = ?[0m  [["id", 1]]
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "borrowings" ON "borrowings"."book_id" = "books"."id" WHERE "books"."title" = ?[0m  [["title", "pallavi"]]
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "borrowings" ON "borrowings"."book_id" = "books"."id" WHERE "books"."title" = ?[0m  [["title", "pallavi"]]
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "borrowings" ON "borrowings"."book_id" = "books"."id" WHERE "books"."title" = ?[0m  [["title", "pallavi"]]
+Started GET "/users" for 127.0.0.1 at 2023-09-04 16:00:16 +0530
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+Completed 200 OK in 6ms (Views: 1.3ms | ActiveRecord: 0.6ms | Allocations: 4256)
+
+
+Started GET "/books" for 127.0.0.1 at 2023-09-04 16:00:23 +0530
+Processing by BooksController#index as */*
+  Parameters: {"title"=>"rishita", "author"=>"payasi", "publication_year"=>"1965", "availability"=>"true"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_user'
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  ↳ app/controllers/books_controller.rb:6:in `index'
+Completed 200 OK in 8ms (Views: 3.4ms | ActiveRecord: 0.3ms | Allocations: 4555)
+
+
+Started GET "/borrowers" for 127.0.0.1 at 2023-09-04 16:00:52 +0530
+Processing by BorrowersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_user'
+  [1m[36mBorrower Load (0.2ms)[0m  [1m[34mSELECT "borrowers".* FROM "borrowers"[0m
+  ↳ app/controllers/borrowers_controller.rb:6:in `index'
+Completed 200 OK in 10ms (Views: 6.8ms | ActiveRecord: 0.3ms | Allocations: 3948)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m

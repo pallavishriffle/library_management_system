@@ -13,9 +13,9 @@ class BorrowingsController < ApplicationController
   def create
     @borrowing = Borrowing.new(borrowing_params)
     if @borrowing.save
-      render json: @borrowing, status: :created
+      render json: { message:"Borrowing Added!!", data: @borrowing }
     else
-      render json: @borrowing.errors, status: :unprocessable_entity
+      render json: { errors: @borrowing.errors.full_messages }
     end
   end
 
@@ -23,33 +23,24 @@ class BorrowingsController < ApplicationController
     @borrowing = Borrowing.find(params[:id])
   end
 
-  def edit
-    @borrowing = Borrowing.find(params[:id])
-  end
 
   def update
     @borrowing = Borrowing.find(params[:id])
 
     if @borrowing.update(borrowing_params)
-      render plain: 'borrowing update succesfully added'
+      render json: { message:"Borrowing updated!!", data: @borrowing }
     else
-      render :edit, status: :unprocessable_entity
+      render json: { errors: @borrowing.errors.full_messages }
     end
   end
 
   def destroy
     @borrowing = Borrowing.find(params[:id])
     @borrowing.destroy
-
-    render plain: 'borrower deleted succesfully '
+    render json: { message:"Borrowing Deleted!!", data: @borrowing }
   end
 
   private
-
-  def set_borrowing
-    @borrowing = Borrowing.find(params[:id])
-    render plain: 'Hey! I am set borrowing method.'
-  end
 
   def borrowing_params
     params.permit(:book_id, :borrower_id, :return_date, :returned)
