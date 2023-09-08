@@ -33,7 +33,7 @@ class BorrowersController < ApplicationController
   def destroy
     @borrower = Borrower.find(params[:id])
     @borrower.destroy
-    render json: { message:"Borrower Deleted!!", data: @book }
+    render json: { message:"Borrower Deleted!!", data: @borrower }
   end
 
   private
