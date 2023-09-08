@@ -6,10 +6,6 @@ class BorrowingsController < ApplicationController
     render json: @borrowings
   end
 
-  def new
-    @borrowing = Borrowing.new
-  end
-
   def create
     @borrowing = Borrowing.new(borrowing_params)
     if @borrowing.save

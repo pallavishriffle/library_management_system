@@ -6,43 +6,34 @@ class UsersController < ApplicationController
     render json: @users
   end
 
-  def show
-    @user = User.find(params[:id])
-  end
-
-  def new
-    @user = User.new
-  end
-
   def create
     @user = User.new(user_params)
 
     if @user.save
-      render plain: 'user succesfully added'
+      render json: { message:"User Added!!", data: @user }
     else
-      render :new, status: 422
+      render json: { errors: @user.errors.full_messages }
     end
-  end
-
-  def edit
-    @user = User.find(params[:id])
   end
 
   def update
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-      render plain: 'user update succesfully added'
+      render json: { message:"User updated!!", data: @user }
     else
-      render :edit, status: :unprocessable_entity
+      render json: { errors: @user.errors.full_messages }
     end
   end
 
   def destroy
     @user = User.find(params[:id])
     @user.destroy
+    render json: { message:"User Delete!!", data: @user }
+  end
 
-    render plain: 'user deleted succesfully '
+  def show
+    @user = User.find(params[:id])
   end
 
   private
